@@ -1,0 +1,402 @@
+
+LAB3.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  0000027a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000206  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00800100  00800100  0000027a  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000027a  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002ac  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000068  00000000  00000000  000002ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000009fc  00000000  00000000  00000354  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000859  00000000  00000000  00000d50  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000004e4  00000000  00000000  000015a9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000ac  00000000  00000000  00001a90  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000479  00000000  00000000  00001b3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000019a  00000000  00000000  00001fb5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  0000214f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 7d 00 	jmp	0xfa	; 0xfa <__vector_17>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a6 30       	cpi	r26, 0x06	; 6
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 cc 00 	call	0x198	; 0x198 <main>
+  88:	0c 94 01 01 	jmp	0x202	; 0x202 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <adc_read>:
+}
+
+// Leer valor del ADC en el canal especificado
+uint16_t adc_read(uint8_t channel) {
+	// Verificar que el canal sea válido (0-7)
+	if(channel > 7) return 0;
+  90:	88 30       	cpi	r24, 0x08	; 8
+  92:	c8 f4       	brcc	.+50     	; 0xc6 <adc_read+0x36>
+	
+	// Seleccionar canal manteniendo la configuración de referencia
+	ADMUX = (ADMUX & 0xF0) | (channel & 0x0F);
+  94:	ec e7       	ldi	r30, 0x7C	; 124
+  96:	f0 e0       	ldi	r31, 0x00	; 0
+  98:	90 81       	ld	r25, Z
+  9a:	90 7f       	andi	r25, 0xF0	; 240
+  9c:	8f 70       	andi	r24, 0x0F	; 15
+  9e:	89 2b       	or	r24, r25
+  a0:	80 83       	st	Z, r24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a2:	85 e3       	ldi	r24, 0x35	; 53
+  a4:	8a 95       	dec	r24
+  a6:	f1 f7       	brne	.-4      	; 0xa4 <adc_read+0x14>
+  a8:	00 00       	nop
+	
+	// Esperar un poco para que se estabilice la selección del canal
+	_delay_us(10);
+	
+	// Iniciar conversión
+	ADCSRA |= (1 << ADSC);
+  aa:	ea e7       	ldi	r30, 0x7A	; 122
+  ac:	f0 e0       	ldi	r31, 0x00	; 0
+  ae:	80 81       	ld	r24, Z
+  b0:	80 64       	ori	r24, 0x40	; 64
+  b2:	80 83       	st	Z, r24
+	
+	// Esperar a que termine la conversión
+	while(ADCSRA & (1 << ADSC));
+  b4:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+  b8:	86 fd       	sbrc	r24, 6
+  ba:	fc cf       	rjmp	.-8      	; 0xb4 <adc_read+0x24>
+	
+	// Retornar el resultado (registro ADC de 16 bits, pero solo 10 bits útiles)
+	return ADC;
+  bc:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7f8078>
+  c0:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+  c4:	08 95       	ret
+}
+
+// Leer valor del ADC en el canal especificado
+uint16_t adc_read(uint8_t channel) {
+	// Verificar que el canal sea válido (0-7)
+	if(channel > 7) return 0;
+  c6:	80 e0       	ldi	r24, 0x00	; 0
+  c8:	90 e0       	ldi	r25, 0x00	; 0
+	// Esperar a que termine la conversión
+	while(ADCSRA & (1 << ADSC));
+	
+	// Retornar el resultado (registro ADC de 16 bits, pero solo 10 bits útiles)
+	return ADC;
+}
+  ca:	08 95       	ret
+
+000000cc <adc_init>:
+
+// Inicializar el ADC
+void adc_init(void) {
+	// Configurar referencia de voltaje (AVCC con capacitor externo en AREF)
+	// REFS1 = 0, REFS0 = 1 -> AVCC como referencia
+	ADMUX = (1 << REFS0);
+  cc:	80 e4       	ldi	r24, 0x40	; 64
+  ce:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+	
+	// Habilitar ADC y configurar prescaler
+	// Para 16MHz, prescaler de 128 da frecuencia ADC de 125kHz (óptima)
+	// ADEN = 1 (habilitar ADC)
+	// ADPS2:0 = 111 (prescaler 128)
+	ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);
+  d2:	87 e8       	ldi	r24, 0x87	; 135
+  d4:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+	
+	// Realizar una conversión dummy para estabilizar el ADC
+	adc_read(0);
+  d8:	80 e0       	ldi	r24, 0x00	; 0
+  da:	0e 94 48 00 	call	0x90	; 0x90 <adc_read>
+  de:	08 95       	ret
+
+000000e0 <spi_slave_init>:
+volatile uint8_t command_received = 0;
+
+// Función para inicializar SPI en modo esclavo
+void spi_slave_init(void) {
+	// Configurar pines SPI
+	DDRB |= (1 << DDB4);  // MISO como salida (obligatorio)
+  e0:	84 b1       	in	r24, 0x04	; 4
+  e2:	80 61       	ori	r24, 0x10	; 16
+  e4:	84 b9       	out	0x04, r24	; 4
+	DDRB &= ~((1 << DDB3) | (1 << DDB5) | (1 << DDB2));  // MOSI, SCK, SS como entradas
+  e6:	84 b1       	in	r24, 0x04	; 4
+  e8:	83 7d       	andi	r24, 0xD3	; 211
+  ea:	84 b9       	out	0x04, r24	; 4
+	
+	// Habilitar SPI, interrupciones, modo esclavo, MSB primero
+	SPCR = (1 << SPE) | (1 << SPIE) | (0 << MSTR);
+  ec:	80 ec       	ldi	r24, 0xC0	; 192
+  ee:	8c bd       	out	0x2c, r24	; 44
+	
+	// Opcional: habilitar pull-up en SS si es necesario
+	PORTB |= (1 << PORTB2);
+  f0:	85 b1       	in	r24, 0x05	; 5
+  f2:	84 60       	ori	r24, 0x04	; 4
+  f4:	85 b9       	out	0x05, r24	; 5
+	
+	// Preparar primer byte (dummy)
+	SPDR = 0x00;  // Inicializar con 0 es más seguro que 0xAA
+  f6:	1e bc       	out	0x2e, r1	; 46
+  f8:	08 95       	ret
+
+000000fa <__vector_17>:
+}
+
+// Interrupción SPI
+ISR(SPI_STC_vect) {
+  fa:	1f 92       	push	r1
+  fc:	0f 92       	push	r0
+  fe:	0f b6       	in	r0, 0x3f	; 63
+ 100:	0f 92       	push	r0
+ 102:	11 24       	eor	r1, r1
+ 104:	8f 93       	push	r24
+ 106:	9f 93       	push	r25
+	static uint8_t command = 0;
+	
+	// Leer el dato recibido
+	uint8_t received_data = SPDR;
+ 108:	8e b5       	in	r24, 0x2e	; 46
+	
+	// Si SS está bajo (activo), procesamos el comando
+	if (!(PINB & (1 << PINB2))) {
+ 10a:	1a 99       	sbic	0x03, 2	; 3
+ 10c:	3b c0       	rjmp	.+118    	; 0x184 <__vector_17+0x8a>
+		// Interpretar como comando si es el primer byte
+		if (command == 0) {
+ 10e:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <_edata>
+ 112:	91 11       	cpse	r25, r1
+ 114:	02 c0       	rjmp	.+4      	; 0x11a <__vector_17+0x20>
+			command = received_data;
+ 116:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+		}
+		
+		// Responder según el comando recibido
+		switch(command) {
+ 11a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 11e:	82 30       	cpi	r24, 0x02	; 2
+ 120:	89 f0       	breq	.+34     	; 0x144 <__vector_17+0x4a>
+ 122:	18 f4       	brcc	.+6      	; 0x12a <__vector_17+0x30>
+ 124:	81 30       	cpi	r24, 0x01	; 1
+ 126:	31 f0       	breq	.+12     	; 0x134 <__vector_17+0x3a>
+ 128:	25 c0       	rjmp	.+74     	; 0x174 <__vector_17+0x7a>
+ 12a:	83 30       	cpi	r24, 0x03	; 3
+ 12c:	99 f0       	breq	.+38     	; 0x154 <__vector_17+0x5a>
+ 12e:	84 30       	cpi	r24, 0x04	; 4
+ 130:	c9 f0       	breq	.+50     	; 0x164 <__vector_17+0x6a>
+ 132:	20 c0       	rjmp	.+64     	; 0x174 <__vector_17+0x7a>
+			case 0x01:  // Parte alta de pot1
+			SPDR = (uint8_t)(pot1_value >> 8);
+ 134:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <pot1_value>
+ 138:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <pot1_value+0x1>
+ 13c:	9e bd       	out	0x2e, r25	; 46
+			command = 0;  // Resetear comando
+ 13e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+			break;
+ 142:	1c c0       	rjmp	.+56     	; 0x17c <__vector_17+0x82>
+			
+			case 0x02:  // Parte baja de pot1
+			SPDR = (uint8_t)(pot1_value & 0xFF);
+ 144:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <pot1_value>
+ 148:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <pot1_value+0x1>
+ 14c:	8e bd       	out	0x2e, r24	; 46
+			command = 0;
+ 14e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+			break;
+ 152:	14 c0       	rjmp	.+40     	; 0x17c <__vector_17+0x82>
+			
+			case 0x03:  // Parte alta de pot2
+			SPDR = (uint8_t)(pot2_value >> 8);
+ 154:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <pot2_value>
+ 158:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <pot2_value+0x1>
+ 15c:	9e bd       	out	0x2e, r25	; 46
+			command = 0;
+ 15e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+			break;
+ 162:	0c c0       	rjmp	.+24     	; 0x17c <__vector_17+0x82>
+			
+			case 0x04:  // Parte baja de pot2
+			SPDR = (uint8_t)(pot2_value & 0xFF);
+ 164:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <pot2_value>
+ 168:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <pot2_value+0x1>
+ 16c:	8e bd       	out	0x2e, r24	; 46
+			command = 0;
+ 16e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+			break;
+ 172:	04 c0       	rjmp	.+8      	; 0x17c <__vector_17+0x82>
+			
+			default:
+			SPDR = 0xFF;  // Respuesta de error
+ 174:	8f ef       	ldi	r24, 0xFF	; 255
+ 176:	8e bd       	out	0x2e, r24	; 46
+			command = 0;
+ 178:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+			break;
+		}
+		
+		command_received = 1;
+ 17c:	81 e0       	ldi	r24, 0x01	; 1
+ 17e:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <command_received>
+ 182:	03 c0       	rjmp	.+6      	; 0x18a <__vector_17+0x90>
+		} else {
+		// SS está alto, preparar para nueva transacción
+		command = 0;
+ 184:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
+		SPDR = 0x00;
+ 188:	1e bc       	out	0x2e, r1	; 46
+	}
+}
+ 18a:	9f 91       	pop	r25
+ 18c:	8f 91       	pop	r24
+ 18e:	0f 90       	pop	r0
+ 190:	0f be       	out	0x3f, r0	; 63
+ 192:	0f 90       	pop	r0
+ 194:	1f 90       	pop	r1
+ 196:	18 95       	reti
+
+00000198 <main>:
+
+int main(void) {
+	// Inicializar periféricos
+	adc_init();
+ 198:	0e 94 66 00 	call	0xcc	; 0xcc <adc_init>
+	spi_slave_init();
+ 19c:	0e 94 70 00 	call	0xe0	; 0xe0 <spi_slave_init>
+	sei();
+ 1a0:	78 94       	sei
+	
+	// LED de debug
+	DDRD |= (1 << DDD7);
+ 1a2:	8a b1       	in	r24, 0x0a	; 10
+ 1a4:	80 68       	ori	r24, 0x80	; 128
+ 1a6:	8a b9       	out	0x0a, r24	; 10
+	PORTD &= ~(1 << PORTD7);  // Apagar LED inicialmente
+ 1a8:	8b b1       	in	r24, 0x0b	; 11
+ 1aa:	8f 77       	andi	r24, 0x7F	; 127
+ 1ac:	8b b9       	out	0x0b, r24	; 11
+	
+	while(1) {
+		// Leer potenciómetros continuamente
+		pot1_value = adc_read(ADC_CHANNEL_0);
+ 1ae:	80 e0       	ldi	r24, 0x00	; 0
+ 1b0:	0e 94 48 00 	call	0x90	; 0x90 <adc_read>
+ 1b4:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <pot1_value+0x1>
+ 1b8:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <pot1_value>
+		pot2_value = adc_read(ADC_CHANNEL_1);
+ 1bc:	81 e0       	ldi	r24, 0x01	; 1
+ 1be:	0e 94 48 00 	call	0x90	; 0x90 <adc_read>
+ 1c2:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <pot2_value+0x1>
+ 1c6:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <pot2_value>
+		
+		// Indicador visual de actividad
+		if(command_received) {
+ 1ca:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <command_received>
+ 1ce:	88 23       	and	r24, r24
+ 1d0:	71 f0       	breq	.+28     	; 0x1ee <main+0x56>
+			PORTD ^= (1 << PORTD7);  // Alternar LED
+ 1d2:	8b b1       	in	r24, 0x0b	; 11
+ 1d4:	80 58       	subi	r24, 0x80	; 128
+ 1d6:	8b b9       	out	0x0b, r24	; 11
+			command_received = 0;
+ 1d8:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <command_received>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1dc:	2f ef       	ldi	r18, 0xFF	; 255
+ 1de:	80 e7       	ldi	r24, 0x70	; 112
+ 1e0:	92 e0       	ldi	r25, 0x02	; 2
+ 1e2:	21 50       	subi	r18, 0x01	; 1
+ 1e4:	80 40       	sbci	r24, 0x00	; 0
+ 1e6:	90 40       	sbci	r25, 0x00	; 0
+ 1e8:	e1 f7       	brne	.-8      	; 0x1e2 <main+0x4a>
+ 1ea:	00 c0       	rjmp	.+0      	; 0x1ec <main+0x54>
+ 1ec:	00 00       	nop
+ 1ee:	2f ef       	ldi	r18, 0xFF	; 255
+ 1f0:	89 ef       	ldi	r24, 0xF9	; 249
+ 1f2:	90 e0       	ldi	r25, 0x00	; 0
+ 1f4:	21 50       	subi	r18, 0x01	; 1
+ 1f6:	80 40       	sbci	r24, 0x00	; 0
+ 1f8:	90 40       	sbci	r25, 0x00	; 0
+ 1fa:	e1 f7       	brne	.-8      	; 0x1f4 <main+0x5c>
+ 1fc:	00 c0       	rjmp	.+0      	; 0x1fe <main+0x66>
+ 1fe:	00 00       	nop
+ 200:	d6 cf       	rjmp	.-84     	; 0x1ae <main+0x16>
+
+00000202 <_exit>:
+ 202:	f8 94       	cli
+
+00000204 <__stop_program>:
+ 204:	ff cf       	rjmp	.-2      	; 0x204 <__stop_program>
