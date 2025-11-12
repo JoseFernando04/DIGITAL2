@@ -1,0 +1,17 @@
+../Core/Src/main.c:121:5:_write	1
+../Core/Src/main.c:127:6:LeerLDRsLocal	4
+../Core/Src/main.c:150:6:ActualizarNeoPixelsLocal	3
+../Core/Src/main.c:162:6:MostrarDigito	2
+../Core/Src/main.c:181:5:main	5
+../Core/Src/main.c:315:6:SystemClock_Config	3
+../Core/Src/main.c:363:13:MX_ADC1_Init	6
+../Core/Src/main.c:442:13:MX_I2C2_Init	2
+../Core/Src/main.c:476:13:MX_TIM1_Init	7
+../Core/Src/main.c:551:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:582:13:MX_DMA_Init	1
+../Core/Src/main.c:600:13:MX_GPIO_Init	1
+../Core/Src/main.c:670:6:LeerDatosEsclavo	11
+../Core/Src/main.c:740:6:ConsolidarDatos	2
+../Core/Src/main.c:761:6:EnviarDatosESP32	3
+../Core/Src/main.c:779:6:EnviarDatosNucleoEsclava	5
+../Core/Src/main.c:818:6:Error_Handler	1
